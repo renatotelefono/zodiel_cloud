@@ -1,24 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SZLGV6DR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B1SZLGV6DR');
-</script>
-
-
-
-
-
-
-
-
 <head>
   <meta charset="UTF-8">
+  <script src="analytics.js"></script>
   <title>Tarocchi Online – Lettura dei Tarocchi Online – Interpreta Passato, Presente e Futuro</title>
 <meta name="description" content="Fai la tua lettura dei tarocchi online. Mescola le carte e scopri il significato del tuo passato, presente e futuro. Interpretazione gratuita.">
 
@@ -121,7 +106,8 @@
   <div class="container">
     <img src="asset/tarot_corona.jpg" alt="Corona Tarocchi" class="rotating-image">
     <div class="center-hole"></div> <!-- Cerchio nero -->
-    <button class="button-center" onclick="window.location.href='master.html'">Inizia</button>
+    <button class="button-center" onclick="traccia('inizia_lettura'); window.location.href='master.html'">Inizia</button>
   </div>
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
 </body>
 </html>

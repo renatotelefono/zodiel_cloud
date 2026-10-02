@@ -83,6 +83,13 @@ function selezionaCarta(index) {
 
   // Mostra la carta nello slot corrispondente
   const slotId = ["passato", "presente", "futuro"][selezionate.length - 1];
+
+  // 📊 Analytics: carta scelta
+  traccia("carta_scelta", {
+    posizione: slotId,
+    carta: carta.nome,
+    orientamento: carta.dritta ? "dritta" : "rovesciata"
+  });
   const slot = document.getElementById(slotId);
   const img = document.createElement("img");
   img.src = carta.img;
@@ -106,6 +113,7 @@ function selezionaCarta(index) {
 
 /* === Mescola con effetto impila === */
 function mescolaCarte() {
+  traccia("mescola_carte");
   const container = document.getElementById("mazzo");
   const carte = Array.from(container.querySelectorAll("img")).filter(
     img => img.style.visibility !== "hidden"
@@ -140,6 +148,11 @@ function mescolaCarte() {
 
 /* === Interpretazione === */
 function interpreta() {
+  traccia("interpretazione_avviata", {
+    passato: selezionate[0] && selezionate[0].nome,
+    presente: selezionate[1] && selezionate[1].nome,
+    futuro: selezionate[2] && selezionate[2].nome
+  });
   sessionStorage.setItem("lettura", JSON.stringify({
     passato: selezionate[0],
     presente: selezionate[1],
@@ -150,6 +163,7 @@ function interpreta() {
 
 /* === Reset === */
 function reset() {
+  traccia("reset_lettura");
   selezionate = [];
   sessionStorage.removeItem("lettura");
   sessionStorage.removeItem("pdfAbilitato");

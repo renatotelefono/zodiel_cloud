@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SZLGV6DR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B1SZLGV6DR');
-</script>
-
-
 <head>
   <meta charset="UTF-8">
+  <script src="analytics.js"></script>
   <title>Interpretazione dei Tarocchi</title>
   <link rel="stylesheet" href="stile.css">
   
@@ -148,6 +139,13 @@
 
       document.getElementById("titolo-fase").innerText = titolo;
 
+      // 📊 Analytics: fase della lettura visualizzata
+      traccia("fase_vista", {
+        fase: fase,
+        carta: carta.nome,
+        orientamento: carta.dritta ? "dritta" : "rovesciata"
+      });
+
       const img = document.getElementById("imgCarta");
       img.src = carta.img;
       img.style.transform = carta.dritta ? "rotate(0deg)" : "rotate(180deg)";
@@ -169,7 +167,10 @@
           return r.text();
         })
         .then(testo => document.getElementById("descrizione").innerText = testo)
-        .catch(() => document.getElementById("descrizione").innerText = "⚠️ File non trovato: " + descrizioneFile);
+        .catch(() => {
+          document.getElementById("descrizione").innerText = "⚠️ File non trovato: " + descrizioneFile;
+          traccia("file_mancante", { tipo: "descrizione", file: descrizioneFile });
+        });
 
       const btn = document.getElementById("btnAvanti");
       if (btn) btn.innerText = faseCorrente < 2 ? "Avanti" : "Fine";
@@ -185,6 +186,7 @@
     }
 
     function mostraPulsantiFinali() {
+      traccia("lettura_completata");
       const container = document.getElementById("pulsantiContainer");
       container.innerHTML = `
         <div class="pulsanti-finali">
@@ -197,6 +199,7 @@
 
     // 🔁 RICOMINCIA LA LETTURA DAL PASSATO
     function rileggi() {
+      traccia("rileggi_lettura");
       faseCorrente = 0;
       mostraCarta();
       const container = document.getElementById("pulsantiContainer");
@@ -205,16 +208,37 @@
 
     // 📜 GENERA PDF
     function generaPDF() {
+      traccia("pdf_richiesto");
       window.location.href = "genera_pdf.html";
     }
 
     // 🔚 TORNA ALLA PAGINA PRINCIPALE
     function fine() {
+      traccia("fine_lettura");
       window.location.href = "master.html";
     }
+
+    // 📊 Analytics: video avviati, completati o mancanti
+    let videoTracciato = "";
+    window.addEventListener("DOMContentLoaded", () => {
+      const v = document.getElementById("videoCarta");
+      v.addEventListener("play", () => {
+        const file = v.getAttribute("src");
+        if (file === videoTracciato) return; // conta un solo play per video
+        videoTracciato = file;
+        traccia("video_play", { fase: fasi[faseCorrente], video: file });
+      });
+      v.addEventListener("ended", () => {
+        traccia("video_completato", { fase: fasi[faseCorrente], video: v.getAttribute("src") });
+      });
+      v.addEventListener("error", () => {
+        traccia("file_mancante", { tipo: "video", file: v.getAttribute("src") });
+      });
+    });
 
     window.addEventListener("DOMContentLoaded", mostraCarta);
   </script>
 
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
 </body>
 </html>

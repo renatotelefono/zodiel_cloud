@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SZLGV6DR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B1SZLGV6DR');
-</script>
-
-
-
 <head>
   <meta charset="UTF-8">
+  <script src="analytics.js"></script>
  <title>Lettura dei Tarocchi – Gioca e Interpreta il Tuo Destino</title>
 <meta name="description" content="Mescola le carte e scopri cosa rivelano i tarocchi sul tuo destino. Interpretazione gratuita e guidata.">
 
@@ -28,7 +18,7 @@
 
 <body>
   <div class="barra">
-    <button onclick="window.location.href='istruzioni.html'">Istruzioni</button>
+    <button onclick="traccia('apri_istruzioni'); window.location.href='istruzioni.html'">Istruzioni</button>
     <button onclick="mescolaCarte()">Mescola</button>
     <button id="btnInterpretazione" onclick="interpreta()" disabled>Interpretazione</button>
     
@@ -45,5 +35,6 @@
     <!-- Contenitore del mazzo -->
     <section id="mazzo" class="mazzo area-mazzo"></section>
   </main>
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
 </body>
 </html>
