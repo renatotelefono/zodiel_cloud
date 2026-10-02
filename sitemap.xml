@@ -3,35 +3,35 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.zodiel.it/index.html</loc>
+    <loc>https://zodiel.cloud/index.html</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.zodiel.it/master.html</loc>
+    <loc>https://zodiel.cloud/master.html</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.zodiel.it/istruzioni.html</loc>
+    <loc>https://zodiel.cloud/istruzioni.html</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.zodiel.it/interpretazione.html</loc>
+    <loc>https://zodiel.cloud/interpretazione.html</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.zodiel.it/genera_pdf.html</loc>
+    <loc>https://zodiel.cloud/genera_pdf.html</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
