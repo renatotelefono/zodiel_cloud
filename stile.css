@@ -136,3 +136,55 @@ button {
   padding: 16px 40px !important;
   border-radius: 20px !important;
 }
+
+/* ==========================================================
+   PC / schermi larghi: slot e mazzo affiancati,
+   tutto visibile senza scorrere (il cellulare non cambia)
+   ========================================================== */
+@media (min-width: 1000px) and (orientation: landscape) {
+  :root {
+    --altezza-utile: calc(100vh - 130px);   /* altezza finestra meno la barra */
+    --gap-carte: 12px;
+    --larg-carta: min(calc((var(--altezza-utile) - 3 * var(--gap-carte)) / 4 / 1.675),
+                      calc((42vw - 5 * var(--gap-carte)) / 6));
+    --larg-slot: min(calc(var(--altezza-utile) * 0.85 / 1.675),
+                     calc((50vw - 60px) / 3));
+  }
+
+  .barra button {
+    font-size: 18px !important;
+    padding: 12px 32px !important;
+  }
+
+  .area-lettura {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-top: 0;
+    height: var(--altezza-utile);
+    padding-top: 15px;
+  }
+
+  .slot-container {
+    width: auto;
+    margin-bottom: 0;
+    gap: 20px;
+  }
+
+  .slot {
+    width: var(--larg-slot);
+    height: calc(var(--larg-slot) * 1.675);
+    margin: 0;
+  }
+
+  .area-mazzo {
+    width: calc(6 * var(--larg-carta) + 5 * var(--gap-carte));
+    gap: var(--gap-carte);
+  }
+
+  .carta {
+    width: var(--larg-carta);
+    height: calc(var(--larg-carta) * 1.675);
+  }
+}
