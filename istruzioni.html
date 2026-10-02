@@ -105,6 +105,39 @@
 
 
 
+
+/* ==========================================================
+   PC / schermi larghi: istruzioni in una sola schermata.
+   Il testo si adatta all'altezza della finestra. Il cellulare non cambia.
+   ========================================================== */
+@media (min-width: 1000px) and (orientation: landscape) {
+  .istruzioni {
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+    margin: 20px auto;
+    padding: 2.5vh 36px;
+    font-size: clamp(14px, 2.5vh, 22px);
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+  }
+  .istruzioni h2 {
+    font-size: clamp(20px, 3.4vh, 30px);
+    margin: 0 0 1.5vh;
+  }
+  #testoIstruzioni {
+    overflow-y: auto;      /* sicurezza: se la finestra è minuscola scorre solo il riquadro */
+    min-height: 0;
+  }
+  #testoIstruzioni p { margin: 0 0 0.5em; }
+  .centrato { margin: 1.2vh 0 0.6vh; }
+  .istruzioni button {
+    margin: 2vh auto 0;
+    flex-shrink: 0;
+    font-size: 18px !important;
+    padding: 10px 30px !important;
+  }
+}
   </style>
 </head>
 <body>
