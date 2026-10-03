@@ -69,7 +69,7 @@
     b.innerHTML =
       "Usiamo Google Analytics per capire in forma aggregata come viene usato il sito. " +
       "Questi cookie si attivano solo se accetti. " +
-      '<a href="privacy.html">Informativa privacy</a>' +
+      '<a href="/privacy">Informativa privacy</a>' +
       '<div class="bc-pulsanti">' +
       '<button type="button" class="bc-rifiuta">Rifiuta</button>' +
       '<button type="button" class="bc-accetta">Accetta</button>' +
