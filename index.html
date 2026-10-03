@@ -16,18 +16,84 @@
 <style>
   body {
     margin: 0;
-    height: 100vh;
+    background-color: #111;
+    overflow-x: hidden;
+  }
+
+  /* Prima schermata: la ruota centrata */
+  .hero {
+    min-height: min(100vh, 860px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #111;
-    overflow: hidden;
+    position: relative;
   }
 
   .container {
     position: relative;
     width: 700px;
     height: 700px;
+  }
+
+  @media (max-height: 760px) and (min-width: 800px) {
+    .container { zoom: 0.85; }
+  }
+
+  .scopri {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #40E0D0;
+    opacity: .75;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    text-decoration: none;
+    animation: galleggia 2.4s ease-in-out infinite;
+  }
+  @keyframes galleggia {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+
+  /* Testo descrittivo sotto la ruota */
+  .descrizione-home {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    color: #cfeee9;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    text-align: left;
+  }
+  .descrizione-home h1,
+  .descrizione-home h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #40E0D0;
+    text-shadow: 0 0 10px rgba(64, 224, 208, .6);
+    text-align: center;
+  }
+  .descrizione-home h1 { font-size: 30px; margin: 0 0 20px; }
+  .descrizione-home h2 { font-size: 22px; margin: 36px 0 12px; }
+  .descrizione-home ol { padding-left: 24px; }
+  .descrizione-home li { margin-bottom: 8px; }
+  .descrizione-home strong { color: #40E0D0; }
+  .descrizione-home .nota { font-size: 16px; opacity: .8; font-style: italic; }
+  .descrizione-home .cta-box { text-align: center; margin-top: 36px; }
+  .descrizione-home .cta {
+    display: inline-block;
+    background-color: #40E0D0;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #40E0D0;
+    text-decoration: none;
   }
 
   .rotating-image {
@@ -103,11 +169,33 @@
 
 </head>
 <body>
-  <div class="container">
-    <img src="asset/tarot_corona.jpg" alt="Corona Tarocchi" class="rotating-image">
-    <div class="center-hole"></div> <!-- Cerchio nero -->
-    <button class="button-center" onclick="traccia('inizia_lettura'); window.location.href='master.html'">Inizia</button>
-  </div>
+  <section class="hero">
+    <div class="container">
+      <img src="asset/tarot_corona.jpg" alt="Ruota dei 22 Arcani Maggiori dei tarocchi" class="rotating-image">
+      <div class="center-hole"></div> <!-- Cerchio nero -->
+      <button class="button-center" onclick="traccia('inizia_lettura'); window.location.href='master.html'">Inizia</button>
+    </div>
+    <a href="#come-funziona" class="scopri">&#8595; Scopri come funziona</a>
+  </section>
+
+  <main class="descrizione-home" id="come-funziona">
+    <h1>Lettura dei Tarocchi Online Gratuita</h1>
+    <p>Zodiel ti offre una <strong>lettura dei tarocchi online gratuita</strong> con il metodo delle tre carte, uno dei sistemi più semplici e conosciuti per interrogare gli <strong>Arcani Maggiori</strong>. Non serve registrarsi: bastano pochi minuti e una domanda nel cuore.</p>
+
+    <h2>Come funziona la stesa a tre carte</h2>
+    <ol>
+      <li><strong>Mescola</strong> il mazzo dei 22 Arcani Maggiori, concentrandoti sulla tua domanda.</li>
+      <li><strong>Scegli tre carte</strong> coperte: la prima rappresenta il <strong>Passato</strong>, la seconda il <strong>Presente</strong>, la terza il <strong>Futuro</strong>.</li>
+      <li><strong>Scopri l'interpretazione</strong>: per ogni carta, dritta o rovesciata, trovi la spiegazione in video e in testo.</li>
+    </ol>
+    <p>In tutto ci sono <strong>132 interpretazioni diverse</strong>: ogni Arcano cambia significato a seconda della posizione e del verso in cui esce.</p>
+
+    <h2>Gratis, anche in PDF</h2>
+    <p>La lettura è completamente gratuita. Alla fine puoi <strong>scaricare la tua interpretazione in PDF</strong>, per conservarla o rileggerla con calma.</p>
+    <p class="nota">I tarocchi sono uno strumento di riflessione personale: usali come spunto per guardarti dentro, non come una previsione certa.</p>
+
+    <div class="cta-box"><a class="cta" href="master.html" onclick="traccia('inizia_lettura')">Inizia la tua lettura</a></div>
+  </main>
   <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
 </body>
 </html>
